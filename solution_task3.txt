@@ -1,0 +1,24 @@
+Ball[] balls = { 
+  new Ball(100, 200, 20), 
+  new Ball(400, 200, 50),
+  new Ball(700, 200, 30)
+};
+
+void setup() {
+  size(800, 400);
+}
+
+void draw() {
+  background(51);
+
+  for (Ball b : balls) {
+    b.update();
+    b.display();
+    b.checkBoundaryCollision();
+    for (Ball other : balls) {
+      if (b != other) {
+        b.checkCollision(other);
+      }
+    }
+  }
+}
